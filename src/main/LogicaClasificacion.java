@@ -2,6 +2,8 @@ package main;
 
 import java.util.*;
 
+import org.hamcrest.internal.SelfDescribingValue;
+
 public class LogicaClasificacion {
 
     /**
@@ -15,8 +17,19 @@ public class LogicaClasificacion {
      *         Salida: "odnuM aloH"
      */
     public String invertirCadena(String texto) {
-        return "";
+        Stack <Character> pila= new Stack<>();
+        for(int i = 0; i<texto.length(); i++){
+            char caracter =texto.charAt(i);
+            pila.push(caracter);
+        }
+        String cadenaInvertida="";
+        while (!pila.isEmpty()) {
+            cadenaInvertida+=pila.pop();
+            
+        }
+        return cadenaInvertida;
     }
+
 
     /**
      * Verifica si los símbolos de paréntesis, corchetes y llaves están bien
@@ -30,8 +43,29 @@ public class LogicaClasificacion {
      *         Salida: true
      */
     public boolean validarSimbolos(String expresion) {
-        return false;
+        Stack<Character> pila = new Stack<>();
+        String cadena = String.valueOf(expresion);
+        for (int i = 0; i < cadena.length(); i++) {
+            char caracter = cadena.charAt(i);
+            if (caracter == '(' || caracter == '[' || caracter == '{') {
+                pila.push(caracter);
+            } else {
+                if (pila.isEmpty()) {
+                    return false;
+                }
+
+                char tope = pila.pop();
+                if ((caracter == ')' && tope != '(') ||
+                    (caracter == ']' && tope != '[') ||
+                    (caracter == '}' && tope != '{')) {
+                    return false;
+                }
+            }
+        }
+
+        return pila.isEmpty();
     }
+
 
     /**
      * Ordena una pila de enteros en orden ascendente usando otra pila auxiliar.
@@ -43,7 +77,10 @@ public class LogicaClasificacion {
      *         Salida: [1, 2, 3, 4]
      */
     public List<Integer> ordenarPila(Stack<Integer> pila) {
-
+        Stack<Integer> pilaAuxiliar= new Stack<>();
+        while(!pila.isEmpty()){
+            int temp=pila.pop();
+        }
         return new ArrayList<>();
     }
 
