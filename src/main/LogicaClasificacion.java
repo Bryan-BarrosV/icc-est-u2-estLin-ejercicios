@@ -80,7 +80,7 @@ public class LogicaClasificacion {
         Stack<Integer> pilaAuxiliar = new Stack<>();
         while (!pila.isEmpty()) {
             int temp = pila.pop();
-            while (!pilaAuxiliar.isEmpty() && pilaAuxiliar.peek() > temp) {
+            while (!pilaAuxiliar.isEmpty() && pilaAuxiliar.peek() < temp) {
                 pila.push(pilaAuxiliar.pop());
             }
             pilaAuxiliar.push(temp);
@@ -103,7 +103,18 @@ public class LogicaClasificacion {
      *         Salida: [2, 4, 6, 1, 3, 5]
      */
     public List<Integer> clasificarPorParidad(LinkedList<Integer> original) {
-
-        return new ArrayList<>();
+        List<Integer> pares = new ArrayList<>();
+        List<Integer> impares = new ArrayList<>();
+        for (Integer num : original)    {
+            if (num % 2 == 0) {
+                pares.add(num);
+            } else {
+                impares.add(num);
+             }
+        }
+        List<Integer> resultado = new ArrayList<>();
+        resultado.addAll(pares);
+        resultado.addAll(impares);
+        return resultado;
     }
 }
